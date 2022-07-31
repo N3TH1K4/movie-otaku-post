@@ -83,17 +83,7 @@ async def post_thing(client, message: Message):
 **Genres:** {genres}
 
 © Managed By Otaku™ Network**
-"""    
-    
-     movie_reply =f"""
-**{titleen}** | `{titleja}` [{tyype}]
-
-**Score:** ⭐️ {score} [Anilist]({surl})
-**Duration:** {duration}
-**Genres:** {genres}
-
-© Managed By Otaku™ Network
-"""    
+"""
     link = InlineKeyboardMarkup([
                 [
                     InlineKeyboardButton(
