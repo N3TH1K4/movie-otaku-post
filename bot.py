@@ -82,7 +82,17 @@ async def post_thing(client, message: Message):
 **Duration:** {duration}
 **Genres:** {genres}
 
-Powered By: **@Otaku_Network**
+© Managed By Otaku™ Network**
+"""    
+    
+     movie_reply =f"""
+**{titleen}** | `{titleja}` [{tyype}]
+
+**Score:** ⭐️ {score} [Anilist]({surl})
+**Duration:** {duration}
+**Genres:** {genres}
+
+© Managed By Otaku™ Network
 """    
     link = InlineKeyboardMarkup([
                 [
@@ -99,25 +109,32 @@ Powered By: **@Otaku_Network**
                     )
                     ]])
     await app.send_message(user_id,"Preview")
+    await app.send_photo(user_id,photo=cover,caption="cover img")
     await app.send_photo(user_id,photo=title_img,caption=main_reply,reply_markup=down)
-    ma_msg = await app.ask(user_id, 'Should I send This To The Main Channel?\nThen send **OK**\nIf you want to cancel send **NO**')
+    ma_msg = await app.ask(user_id, 'Should I send This To The movie Channel?\nThen send **OK**\nIf you want to cancel send **NO**')
     mai = ma_msg.text
     gmain = -1001595817253
     main_id = -1001600210763
     if "ok" in mai or "OK" in mai or "Ok" in mai:
         if user_id == 1813305809 or user_id == 1930645496 or user_id==5235061478:
-            await app.send_photo(main_id,photo=title_img,caption=main_reply,reply_markup=down)
-            await app.send_sticker(main_id,"CAACAgUAAxkBAAIEHGLJScxBvcNzlS5AkEoRpqRpxu5hAAJGAAOpmuYWsYkry0a6FRAeBA")
+            await app.send_photo(main_id,photo=title_img,caption=main_reply)
+            #await app.send_sticker(main_id,"CAACAgUAAxkBAAIEHGLJScxBvcNzlS5AkEoRpqRpxu5hAAJGAAOpmuYWsYkry0a6FRAeBA")
+            link = await app.ask(user_id, 'Send The Link For The Post in main!')
+            invitel = link.text
+            down = InlineKeyboardMarkup([
+                [
+                    InlineKeyboardButton(
+                        text="Download",
+                        url=f"{invitel}",
+                    )
+                    ]])
             await app.send_photo(gmain,photo=title_img,caption=main_reply,reply_markup=down)
             await app.send_sticker(gmain,"CAACAgUAAxkBAAIEe2LPzdkbPBM5gZLxLfOZyPKe-rAzAAKZAAOpmuYWfOMe2DS8IdceBA")
             await app.send_message(user_id,"**Sucessfully Sent The Post to the main!**")
         else:
             await app.send_message(user_id,"**You Are Not From @Otaku_network So you cant do this**")
             return
-    elif "No" in asks or "NO" in asks or "no" in asks:
-        await app.send_message(user_id,"Cancellin' The Process!")
-        return
-    elif "No" in asks or "NO" in asks or "no" in asks:
+    elif "No" in mai or "NO" in mai or "no" in mai:
         await app.send_message(user_id,"Cancellin' The Process!")
         return
     else:
@@ -144,7 +161,7 @@ async def strt(client, message: Message):
                     ],
                 ])
     img = "https://wallpaperaccess.com/full/5393948.jpg"
-    txt = "Hello! **My name is Shinoa Hiiragi** Am a girl who can send posts like posts in **@Anime_MoviesNet**\n**Note**: This Only Works For The Admins Of Otaku Network You must add me as an `admin` in channel or group"
+    txt = "Hello! **My name is Shinoa Hiiragi** Am a girl who can send posts like posts in **@Anime_MoviesNet**\n**Note**: This Only Works For The Admins Of Otaku Network"
     await app.send_photo(user_id,photo=img,caption=txt,reply_markup=link)
 
     
